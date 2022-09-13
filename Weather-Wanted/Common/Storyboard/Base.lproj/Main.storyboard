@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8pD-Qu-AYH">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8,20 +8,106 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="pBo-sI-gAe">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Weather_Wanted" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="8pD-Qu-AYH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t5d-1e-v9K">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uTg-B0-ig3" kind="relationship" relationship="rootViewController" id="Rcy-hd-CYv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4mJ-mr-noT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="79"/>
+            <point key="canvasLocation" x="-126" y="229"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="c1a-YN-pVE">
+            <objects>
+                <viewController id="uTg-B0-ig3" customClass="HomeViewController" customModule="Weather_Wanted" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZhE-c5-mfS">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-Za-Wrf">
+                                <rect key="frame" x="0.0" y="88" width="428" height="804"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="28V-84-PEK">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uTg-B0-ig3" id="GZn-jM-8Nz"/>
+                                    <outlet property="delegate" destination="uTg-B0-ig3" id="HJM-OP-DyC"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uPN-nD-Fa5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Dgp-Za-Wrf" firstAttribute="top" secondItem="uPN-nD-Fa5" secondAttribute="top" id="Gh5-Ao-YZp"/>
+                            <constraint firstItem="Dgp-Za-Wrf" firstAttribute="leading" secondItem="uPN-nD-Fa5" secondAttribute="leading" id="OmA-sV-hMk"/>
+                            <constraint firstItem="uPN-nD-Fa5" firstAttribute="bottom" secondItem="Dgp-Za-Wrf" secondAttribute="bottom" id="QoG-CF-K6o"/>
+                            <constraint firstItem="uPN-nD-Fa5" firstAttribute="trailing" secondItem="Dgp-Za-Wrf" secondAttribute="trailing" id="fXL-M6-vsf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Weather" id="DOE-mJ-nIr"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Dgp-Za-Wrf" id="5x3-EI-Myd"/>
+                        <segue destination="tu3-1v-WOk" kind="push" id="LTE-3r-vgX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dDp-cK-NGm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747" y="229"/>
+        </scene>
+        <!--City-->
+        <scene sceneID="0ZZ-GZ-Z0R">
+            <objects>
+                <viewController id="tu3-1v-WOk" customClass="CityViewController" customModule="Weather_Wanted" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HJC-ap-mgW">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fvp-wt-b0v">
+                                <rect key="frame" x="0.0" y="88" width="428" height="804"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eY6-7A-wGC">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tu3-1v-WOk" id="piU-sm-k6N"/>
+                                    <outlet property="delegate" destination="tu3-1v-WOk" id="rv9-pw-bQe"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="97F-z2-uNx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fvp-wt-b0v" firstAttribute="trailing" secondItem="97F-z2-uNx" secondAttribute="trailing" id="Sbw-Vw-uws"/>
+                            <constraint firstItem="Fvp-wt-b0v" firstAttribute="leading" secondItem="97F-z2-uNx" secondAttribute="leading" id="Txn-eF-Ouk"/>
+                            <constraint firstItem="97F-z2-uNx" firstAttribute="bottom" secondItem="Fvp-wt-b0v" secondAttribute="bottom" id="iQU-go-th6"/>
+                            <constraint firstItem="Fvp-wt-b0v" firstAttribute="top" secondItem="97F-z2-uNx" secondAttribute="top" id="vhE-Wz-ZUX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="City" id="AAG-kt-6mg"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Fvp-wt-b0v" id="Vi8-rb-ui6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSB-ek-LSW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618" y="229"/>
         </scene>
     </scenes>
     <resources>
