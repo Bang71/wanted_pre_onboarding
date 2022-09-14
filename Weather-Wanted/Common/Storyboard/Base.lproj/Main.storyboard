@@ -70,7 +70,7 @@
         <!--City-->
         <scene sceneID="0ZZ-GZ-Z0R">
             <objects>
-                <viewController id="tu3-1v-WOk" customClass="CityViewController" customModule="Weather_Wanted" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CityViewController" id="tu3-1v-WOk" customClass="CityViewController" customModule="Weather_Wanted" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HJC-ap-mgW">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

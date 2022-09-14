@@ -21,7 +21,15 @@ class CityItemCell: UICollectionViewCell {
         
     }
     
+    func set(item: String, value: Any) {
+        itemLabel.text = item
+        valueLabel.text = "\(value)"
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        itemLabel.text = ""
+        valueLabel.text = ""
     }
 }

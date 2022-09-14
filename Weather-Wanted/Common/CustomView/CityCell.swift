@@ -13,6 +13,8 @@ class CityCell: UICollectionViewCell {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     
+    var id: Int?
+    var name: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,14 +26,24 @@ class CityCell: UICollectionViewCell {
         
     }
     
-    func set(name: String, temp: String, humidity: String, url: String) {
-        cityLabel.text = name
-        tempLabel.text = temp + "°"
-        humidityLabel.text = humidity + "%"
+    func set(id: Int, name: String, temp: Float, humidity: Float, url: String) {
+        self.id = id
+        self.name = name
         
-        if let imageURL = URL(string: url) {
-            if let data = try? Data(contentsOf: imageURL) {
-                weatherIcon.image = UIImage(data: data)
+        cityLabel.text = name
+        tempLabel.text = "\(temp)°"
+        humidityLabel.text = "\(humidity)%"
+    
+        if let cachedImage = ImageCacheManager.shared.object(forKey: url as NSString) {
+            weatherIcon.image = cachedImage
+        } else if let imageURL = URL(string: url) {
+            do {
+                if let data = try? Data(contentsOf: imageURL) {
+                    if let image = UIImage(data: data) {
+                        weatherIcon.image = UIImage(data: data)
+                        ImageCacheManager.shared.setObject(image, forKey: url as NSString)
+                    }
+                }
             }
         }
     }
@@ -39,8 +51,10 @@ class CityCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        self.id = nil
         cityLabel.text = ""
         tempLabel.text = ""
         humidityLabel.text = ""
+        weatherIcon.image = nil
     }
 }
